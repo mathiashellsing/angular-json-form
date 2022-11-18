@@ -16,8 +16,7 @@ export class JsonFormComponent {
   name = 'Angular';
   jsonResponse = [
     {
-      type: 'input',
-      label: 'Username 123',
+      label: 'Username abc',
       inputType: 'text',
       name: 'name',
       validations: [
@@ -34,9 +33,8 @@ export class JsonFormComponent {
       ],
     },
     {
-      type: 'password',
       label: 'Password',
-      inputType: 'text',
+      inputType: 'password',
       name: 'name',
       validations: [
         {
