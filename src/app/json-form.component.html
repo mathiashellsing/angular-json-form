@@ -1,36 +1,65 @@
-<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" novalidate>
-  <ng-container *ngFor="let controls of jsonResponse">
-    <div class="control">
-      <label>
-        {{ controls.label }}
-      </label>
+<div class="container">
+  <form
+    [formGroup]="dynamicForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+    class="mb-4"
+  >
+    <ng-container *ngFor="let controls of jsonResponse">
+      <div class="control flex flex-col pb-4">
+        <label>
+          {{ controls.label }}
+        </label>
 
-      <input [type]="controls.type" [formControlName]="controls.label" />
+        <input
+          class="rounded-md"
+          [type]="controls.inputType"
+          [formControlName]="controls.label"
+        />
 
-      <ng-container *ngFor="let validation of controls.validations">
-        <span
-          *ngIf="
-            dynamicForm.controls[controls.label].touched &&
-            dynamicForm.controls[controls.label].errors
-          "
-        >
-          <p
-            class="error"
-            *ngIf="dynamicForm.controls[controls.label].errors[validation.name]"
+        <ng-container *ngFor="let validation of controls.validations">
+          <span
+            *ngIf="
+              dynamicForm.controls[controls.label].touched &&
+              dynamicForm.controls[controls.label].errors
+            "
+            style="color:red;"
           >
-            {{ validation.message }}
-          </p>
-        </span>
-      </ng-container>
-    </div>
-  </ng-container>
-  <br />
-  <input type="submit" [disabled]="!dynamicForm.valid" />
-</form>
+            <p
+              class="error"
+              *ngIf="
+                dynamicForm.controls[controls.label].errors[validation.name]
+              "
+            >
+              {{ validation.message }}
+            </p>
+          </span>
+        </ng-container>
+      </div>
+    </ng-container>
+    <br />
+    <button
+      class="
+        bg-blue-500
+        hover:bg-blue-700
+        text-white
+        font-bold
+        py-2
+        px-4
+        rounded
+        focus:outline-none focus:shadow-outline
+      "
+      type="submit"
+      [disabled]="!dynamicForm.valid"
+    >
+      Submit
+    </button>
+  </form>
 
-<hr />
+  <hr />
 
-<details>
-  <summary><code>jsonResponse</code></summary>
-  <pre>{{ jsonResponse | json }}</pre>
-</details>
+  <details>
+    <summary><code>jsonResponse</code></summary>
+    <pre>{{ jsonResponse | json }}</pre>
+  </details>
+</div>

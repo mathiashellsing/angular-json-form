@@ -17,7 +17,7 @@ export class JsonFormComponent {
   jsonResponse = [
     {
       type: 'input',
-      label: 'Username',
+      label: 'Username 123',
       inputType: 'text',
       name: 'name',
       validations: [
@@ -58,6 +58,7 @@ export class JsonFormComponent {
         if (val.name === 'required') {
           validationsArray.push(Validators.required);
         }
+
         if (val.name === 'pattern') {
           validationsArray.push(Validators.pattern(val.validator));
         }
