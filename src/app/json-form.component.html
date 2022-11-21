@@ -7,16 +7,28 @@
   >
     <ng-container *ngFor="let controls of jsonResponse">
       <div class="control flex flex-col pb-4">
-        
         <label>
           {{ controls.label }}
         </label>
 
-        <input
-          class="rounded-md"
-          [type]="controls.inputType"
-          [formControlName]="controls.label"
-        />
+        <ng-container
+          *ngIf="
+            controls.inputType === 'text' || controls.inputType === 'password'
+          "
+        >
+          <input
+            class="rounded-md"
+            [type]="controls.inputType"
+            [formControlName]="controls.label"
+          />
+        </ng-container>
+
+        <ng-container *ngIf="controls.inputType === 'textarea'">
+          <textarea
+            class="rounded-md"
+            [formControlName]="controls.label"
+          ></textarea>
+        </ng-container>
 
         <ng-container *ngFor="let validation of controls.validations">
           <span

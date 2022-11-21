@@ -44,6 +44,18 @@ export class JsonFormComponent {
         },
       ],
     },
+    {
+      label: 'Textarea',
+      inputType: 'textarea',
+      name: 'name',
+      validations: [
+        {
+          name: 'required',
+          validator: 'required',
+          message: 'Textarea required',
+        },
+      ],
+    },
   ];
   dynamicForm: FormGroup;
 
